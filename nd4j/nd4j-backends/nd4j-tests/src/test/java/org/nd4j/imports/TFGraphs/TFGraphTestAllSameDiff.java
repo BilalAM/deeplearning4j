@@ -143,7 +143,19 @@ public class TFGraphTestAllSameDiff {
 
             //This is failing on strided slice - on what appears to be an invalid op arguments. Will replace
             // this test with a set of more thorough/isolated strided slice tests
-            "g_07"
+            "g_07",
+
+            //https://github.com/deeplearning4j/deeplearning4j/issues/6435
+            "avg_pooling3d/.*",
+
+            //These have a random component so can't be validated using simple .equals... should still be compared, however
+            "alpha_dropout/.*",
+            "layers_dropout/.*",
+
+            //These absurdly slow:
+            "simplewhile.*",
+
+            //New failures:
     };
     public static final Set<String> SKIP_SET = new HashSet<>(Arrays.asList(SKIP_ARR));
 
